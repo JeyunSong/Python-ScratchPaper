@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+</head>
+<body>
+
+ <button onclick= location.href="/post" type="button" class="button">그림 그리기</button>
+
+</body>
+<script>
+    $(document).ready(function () {
+            show_post();
+        });
+
+        function show_post() {
+            $.ajax({
+                type: 'GET',
+                url: '/show_post',
+                data: {},
+                success: function (response) {
+                    let rows = response['pic']
+                    for (let i = 0; i < rows.length; i++) {
+                        let picture = rows[i]['picture']
+
+                        let temp_html = `<div class="col">
+                                              <div class="card">
+                                                        <img src="${picture}" class="card-img-top" alt="빈 이미지" width="500px" height="500px">
+                                                    </div>
+                                            </div>`
+
+                        $('#post-box').append(temp_html)
+
+                    }
+                }
+            })
+        }
+
+
+
+</script>
+
+
+<div class="myCard">
+    <div class="row row-cols-1 row-cols-md-3 g-4 list_add" id="post-box">
+    </div>
+</div>
+
+</html>

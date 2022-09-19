@@ -1,0 +1,62 @@
+*{
+    margin: 0;
+    padding: 0;
+    outline: 0;
+}
+/* 캔버스 설정 */
+canvas{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+    margin-left: 760px;
+    border-radius: 3rem;
+    cursor: pointer;
+    background-color: floralwhite;
+}
+/* 툴모음 전체 박스 */
+.tools{
+    max-width: 1000px;
+    margin: 30px auto 0;
+    display: flex;
+    justify-content:center;
+    flex-direction: row;
+}
+
+/* 툴 컬러 버튼 */
+.tools .color-field{
+    height:40px;
+    width: 40px;
+    min-height:40px;
+    min-width: 40px;
+    cursor:pointer;
+    border-radius: 50%;
+    display: inline-block;
+    box-sizing:border-box;
+    border: 2px solid white;
+    align-self:center;
+}
+
+/* 되돌리기,지우기,다운로드 버튼 */
+.tools .button{
+    align-self: center;
+    width:100px;
+    height:40px;
+    border: 2px solid white;
+    cursor: pointer;
+    color: #222;
+    background: whitesmoke;
+    font-weight: bold;
+    margin:0 6px;
+}
+/* 컬러피커 */
+.color-picker{
+    align-self: center;
+    margin:0 10px;
+    height:50px;
+}
+/* 펜크기 */
+.pen-range{
+    align-self: center;
+    margin:0 10px;
+}
