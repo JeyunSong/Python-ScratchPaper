@@ -19,21 +19,43 @@
 <link rel="stylesheet" type="text/css" href="../static/css/draw.css">
 
 <!-- 그림판시작 -->
-        <canvas id="canvas">
-        </canvas>
-        <div class="tools">
+    <canvas id="canvas">
+    </canvas>
+    <div class="tools">
 
 
-             <!-- 컬러피커  -->
-            <input onInput="draw_color= this.value" type="color" class="color-picker" style="width:70px">
-            <!-- 펜굵기 조절 -->
-            <input type="range" min="1" max="100" class="pen-range"
-                  onInput="draw_width=this.value">
-            <!-- 되돌리기, 지우기, 다운로드 버튼  -->
-            <button onclick="undo_last()"type="button" class="button">되돌리기</button>
-            <button onclick="save()" type="button" class="button">다운로드</button>
-            <button onclick="posting()" type="button" class="button">업로드</button>
+        <!-- 컬러피커  -->
+        <input onInput="draw_color= this.value" type="color" class="color-picker" style="width:70px">
+        <!-- 펜굵기 조절 -->
+        <input type="range" min="1" max="100" class="pen-range"
+               onInput="draw_width=this.value">
+        <!-- 되돌리기, 지우기, 다운로드 버튼  -->
+        <button onclick="undo_last()" type="button" class="button">되돌리기</button>
+        <button onclick="save()" type="button" class="button">다운로드</button>
+        <button onclick="posting()" type="button" class="button">업로드</button>
+
+
+    </div>
+
+    <div class="wrap">
+        <div class="jumbotron jumbotron-fluid">
+            <div class="container">
+                <h1>나홀로 일기장</h1>
+                <div class="posting-box">
+                    <div class="form-group">
+                        <input type="email" class="form-control" id="title" placeholder="사진 제목">
+                    </div>
+                    <div class="form-group">
+                        <textarea class="form-control" id="content" rows="3" placeholder="내용 입력"></textarea>
+                    </div>
+
+                </div>
+            </div>
         </div>
+
+    </div>
+    </div>
+
 
     <!-- javascript -->
     <script src="../static/js/draw.js"></script>

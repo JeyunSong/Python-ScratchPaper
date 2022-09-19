@@ -112,11 +112,14 @@ function posting() {
     const dataURL = canvas.toDataURL();
     canvas.toDataURL('image/jpeg', 0.5);
 
+    let title = $('#title').val()
+    let content = $('#content').val()
+    let likecount = 0
 
     $.ajax({
         type: 'post',
         url: '/save_post',
-        data: {picture_give: dataURL},
+        data: {picture_give: dataURL, title_give: title, content_give: content, likecount_give : likecount},
         success: function (response) {
             alert('Uploaded !!')
             window.location.replace('/')

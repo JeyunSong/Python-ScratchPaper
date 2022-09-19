@@ -3,7 +3,7 @@ from flask import Flask, request, jsonify, render_template
 
 app = Flask(__name__)
 
-client = MongoClient('mongodb+srv://test:sparta@cluster0.g4kgzxf.mongodb.net/Cluster0?retryWrites=true&w=majority')
+client = MongoClient('mongodb+srv://JEYUN:JEYUN@cluster0.g4kgzxf.mongodb.net/Cluster0?retryWrites=true&w=majority')
 
 db = client.study
 
@@ -20,9 +20,27 @@ def post_page():
 
 @app.route('/save_post', methods=["POST"])
 def save_post():
+    title_receive = request.form['title_give']
+    content_receive = request.form['content_give']
+    likecount_receive = request.form['likecount_give']
     picture_receive = request.form.get('picture_give')
-    db.pic.insert_one({'picture': picture_receive})
-    return jsonify({'result': 'success'})
+
+    user_posting_list = list(db.pic.find({}, {'_id': False}))
+    count = len(user_posting_list) + 1
+
+    # likeid = []
+
+    doc = {
+        'postnum': count,
+        'title': title_receive,
+        'content': content_receive,
+        'likecount': likecount_receive,
+        'picture': picture_receive
+        # 'likeid' : (title_receive,content_receive)
+    }
+
+    db.pic.insert_one(doc)
+    return jsonify({'result': 'success', 'msg': '저장 완료!'})
 
 
 @app.route("/show_post", methods=["GET"])

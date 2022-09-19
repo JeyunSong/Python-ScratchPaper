@@ -60,3 +60,23 @@ canvas{
     align-self: center;
     margin:0 10px;
 }
+
+* {
+    font-family: 'Gothic A1', sans-serif;
+
+}
+
+
+.posting-box {
+    width: 500px;
+    margin-top: 20px;
+}
+
+.wrap {
+    width: 900px;
+    margin: auto;
+}
+
+.container {
+    padding-left: 50px;
+}
