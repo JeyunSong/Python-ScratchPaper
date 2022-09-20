@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
+
+    <script>
+        //     $(document).ready(function () {
+        //         show_userposting();
+        //     });
+        //
+        //     function show_userposting() {
+        //         $.ajax({
+        //             type: "GET",
+        //             url: "/main/user",
+        //             data: {},
+        //             success: function (response) {
+        //                 let rows = response['user_posting']
+        //                 console.log(rows)
+        //                 for (let i = 0; i < rows.length; i++) {
+        //                     let picture = rows[i]['picture']
+        //                     let postnum = rows[i]['postnum']
+        //                     let title = rows[i]['title']
+        //                     let content = rows[i]['content']
+        //                     let likecount = rows[i]['likecount']
+        //
+        //                     let temp_html = `<h5 class="card-title">${title}</h5>
+        // <img src=${picture}
+        //      class="card-img-top" alt="...">
+        // <div class="card-body">
+        //     <p class="card-text">${content}</p>
+        //     <p class="card-text">좋아요❤ ${likecount}개</p>
+        // </div>`
+        //
+        //                     $('#card_list').append(temp_html)
+        //
+        //                 }
+        //             }
+        //         })
+        //     }
+
+        <script>
+
+    </script>
+
+    </script>
+
+    <style>
+
+
+    </style>
+</head>
+
+<body>
+<div id="card_list" class="card" style="width: 18rem;">
+
+    {% set title = row["title"] %}
+    {% set picture = row["picture"] %}
+    {% set content = row["content"] %}
+    {% set likecount = row["likecount"] %}
+    {% set postnum = row["postnum"] %}
+
+    <h5 class="card-title">{{title}}</h5>
+    <img src={{picture}} class="card-img-top" alt="...">
+    <div class="card-body">
+        <p class="card-text">{{content}}</p>
+        <p class="card-text">좋아요❤ {{likecount}}개</p>
+
+    </div>
+</div>
+
+
+</body>
+</html>

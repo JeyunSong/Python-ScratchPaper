@@ -17,6 +17,13 @@ def main_page():
 def post_page():
     return render_template('/index.html')
 
+# 상세페이지
+@app.route("/user/<keyword>")
+def show_userpostings(keyword):
+    keywords = int(float(keyword))
+    user_postings_list = db.pic.find_one({'post_num': keywords})
+    return render_template('/index2.html', row = user_postings_list)
+
 
 @app.route('/save_post', methods=["POST"])
 def save_post():

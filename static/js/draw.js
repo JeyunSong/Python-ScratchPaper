@@ -126,6 +126,16 @@ function posting() {
     })
 }
 
+function send_post(num) {
+
+    // window.location.replace('/post/user')
+
+    let postnum = String(num)
+    console.log(typeof(postnum))
+    console.log(postnum)
+
+    window.location.href='/user/'+postnum
+}
 
 
 
