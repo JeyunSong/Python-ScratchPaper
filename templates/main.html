@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Scratch Paper</title>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+            crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" type="text/css" href="../static/css/draw.css">
+</head>
+
+<script>
+    $(document).ready(function () {
+        show_post();
+    });
+
+    function show_post() {
+        $.ajax({
+            type: 'GET',
+            url: '/show_post',
+            data: {},
+            success: function (response) {
+                let rows = response['pic']
+                for (let i = rows.length - 1; i >= 0; i--) {
+
+
+                    let picture = rows[i]['picture']
+                    let postnum = rows[i]['post_num']
+                    let title = rows[i]['title']
+                    let text = rows[i]['text']
+                    let like_count = rows[i]['like_count']
+
+                    let temp_html = `<div class="col">
+                                              <div class="card">
+                                                        <img src="${picture}" class="card-img-top" width="300px" height="300px">
+                                                    </div>
+                                                    ❤ ${like_count}명이 좋아합니다
+                                            </div>`
+
+                    $('#post-box').append(temp_html)
+
+                }
+            }
+        })
+    }
+
+
+</script>
+
+<body>
+
+<!-- 상단 Header -->
+<header class="header">
+    <div>
+        <p class="main-top">
+    </div>
+</header>
+
+<!-- + 버튼 -->
+<div class="myCard">
+    <div class="row row-cols-1 row-cols-md-3 g-4 list_add" id="post-box">
+        <div class="col">
+            <div class="card">
+                <img src="https://ifh.cc/g/YAw2t3.jpg" onclick=location.href="/post" class="card-img-top"
+                     width="300px" height="300px" style="cursor:pointer">
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+<!-- 하단 -->
+<footer class="footer">
+    <h3>Scratch Paper</h3>
+</footer>
+</body>
+
+<script src="../static/js/draw.js"></script>
+</html>

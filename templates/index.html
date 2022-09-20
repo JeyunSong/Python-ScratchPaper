@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
+
+    <title>Scratch Paper</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Gothic+A1&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="../static/css/draw.css">
+</head>
+
+
+    <div class="wrap">
+        <div>
+            <canvas id="canvas">
+            </canvas>
+            <div class="tools">
+                <!-- 컬러피커  -->
+                <input onInput="draw_color= this.value" type="color" class="color-picker" style="width:70px">
+                <!-- 펜굵기 조절 -->
+                <input type="range" min="1" max="100" class="pen-range"
+                       onInput="draw_width=this.value">
+                <!-- 되돌리기, 지우기, 다운로드 버튼  -->
+                <button onclick="undo_last()" type="button" class="button">되돌리기</button>
+                <button onclick="save()" type="button" class="button">다운로드</button>
+            </div>
+        </div>
+
+        <div class="posting-box">
+            <div class="tools">
+                <div class="color-change">
+                    <div onclick="change_color(this)" class="color-field" style="background: orangered;"></div>
+                    <div onclick="change_color(this)" class="color-field" style="background: darkorange;"></div>
+                    <div onclick="change_color(this)" class="color-field" style="background: orange;"></div>
+                    <div onclick="change_color(this)" class="color-field" style="background: yellow;"></div>
+                </div>
+
+            </div>
+
+            <div class="form-group">
+                <input type="email" class="title-control" id="title" placeholder="사진 제목">
+            </div>
+            <div class="form-group">
+                <textarea class="text-control" id="text" rows="3" placeholder="내용 입력"></textarea>
+            </div>
+            <button onclick="posting()" type="button" class="button">저장하기</button>
+
+        </div>
+    </div>
+
+
+<script src="../static/js/draw.js"></script>
+
+</html>
