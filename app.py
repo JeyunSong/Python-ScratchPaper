@@ -3,7 +3,7 @@ from flask import Flask, request, jsonify, render_template
 
 app = Flask(__name__)
 
-client = MongoClient('mongodb+srv://JEYUN:JEYUN@cluster0.g4kgzxf.mongodb.net/Cluster0?retryWrites=true&w=majority')
+client = MongoClient('mongodb+srv://JEYUN:LAKE@cluster0.g4kgzxf.mongodb.net/Cluster0?retryWrites=true&w=majority')
 
 db = client.study
 
@@ -20,10 +20,10 @@ def post_page():
 
 @app.route('/save_post', methods=["POST"])
 def save_post():
-    title_receive = request.form['title_give']
-    content_receive = request.form['content_give']
-    likecount_receive = request.form['likecount_give']
-    picture_receive = request.form.get('picture_give')
+    title_receive = request.form['title']
+    content_receive = request.form['text']
+    likecount_receive = request.form['like_count']
+    picture_receive = request.form.get('picture')
 
     user_posting_list = list(db.pic.find({}, {'_id': False}))
     count = len(user_posting_list) + 1
@@ -31,7 +31,7 @@ def save_post():
     # likeid = []
 
     doc = {
-        'postnum': count,
+        'post_num': count,
         'title': title_receive,
         'content': content_receive,
         'likecount': likecount_receive,

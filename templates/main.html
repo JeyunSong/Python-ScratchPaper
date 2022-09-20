@@ -2,124 +2,86 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Scratch Paper</title>
+
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 
-     <!-- Bootstrap -->
+    <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-        crossorigin="anonymous"></script>
+            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+            crossorigin="anonymous"></script>
 
-    <title>Document</title>
-
-    <!-- CSS -->
-    <link rel="stylesheet" href="{{url_for('static',filename='Layout/header.css')}}">
-    <link rel="stylesheet" href="{{url_for('static',filename='Layout/nav_weather.css')}}">
-    <link rel="stylesheet" href="{{url_for('static',filename='Layout/nav.css')}}">
-    <link rel="stylesheet" href="{{url_for('static',filename='Layout/section.css')}}">
-    <link rel="stylesheet" href="{{url_for('static',filename='Layout/nav_write.css')}}">
-    <link rel="stylesheet" href="{{url_for('static',filename='Layout/footer.css')}}">
-    <link rel="stylesheet" href="{{url_for('static',filename='Layout/basic.css')}}">
-
-    <link rel="stylesheet" href="{{url_for('static',filename='CSS/nav_btn_write.css')}}">
-    <link rel="stylesheet" href="{{url_for('static',filename='CSS/card.css')}}">
-
-    <!-- Script -->
-    <script src="{{url_for('static',filename='js/header_weather.js')}}"></script>
+    <link rel="stylesheet" type="text/css" href="../static/css/draw.css">
 </head>
-<body>
 
-</body>
 <script>
     $(document).ready(function () {
-            show_post();
-        });
+        show_post();
+    });
 
-        function show_post() {
-            $.ajax({
-                type: 'GET',
-                url: '/show_post',
-                data: {},
-                success: function (response) {
-                    let rows = response['pic']
-                    for (let i = 0; i < rows.length; i++) {
-                        let picture = rows[i]['picture']
-                        let postnum = rows[i]['postnum']
-                        let title = rows[i]['title']
-                        let content = rows[i]['content']
-                        let likecount = rows[i]['likecount']
+    function show_post() {
+        $.ajax({
+            type: 'GET',
+            url: '/show_post',
+            data: {},
+            success: function (response) {
+                let rows = response['pic']
+                for (let i = rows.length - 1; i >= 0; i--) {
 
-                        let temp_html = `<div class="col">
+
+                    let picture = rows[i]['picture']
+                    let postnum = rows[i]['post_num']
+                    let title = rows[i]['title']
+                    let text = rows[i]['text']
+                    let like_count = rows[i]['like_count']
+
+                    let temp_html = `<div class="col">
                                               <div class="card">
-                                                        <img src="${picture}" class="card-img-top" alt="빈 이미지" width="500px" height="500px">
-                                                        "타이틀" ${title}
-                                                        "내용" ${content}
-                                                        "PAGE" ${postnum} "좋아요" ${likecount}
+                                                        <img src="${picture}" class="card-img-top" width="300px" height="300px">
                                                     </div>
+                                                    ❤ ${like_count}명이 좋아합니다
                                             </div>`
 
-                        $('#post-box').append(temp_html)
+                    $('#post-box').append(temp_html)
 
-                    }
                 }
-            })
-        }
-
+            }
+        })
+    }
 
 
 </script>
 
+<body>
 
+<!-- 상단 Header -->
+<header class="header">
+    <div>
+        <p class="main-top">
+    </div>
+</header>
+
+<!-- + 버튼 -->
 <div class="myCard">
-    <div class="row row-cols-1 row-cols-md-3 g-4 list_add" id="CARD-box">
+    <div class="row row-cols-1 row-cols-md-3 g-4 list_add" id="post-box">
+        <div class="col">
+            <div class="card">
+                <img src="https://ifh.cc/g/YAw2t3.jpg" onclick=location.href="/post" class="card-img-top"
+                     width="300px" height="300px" style="cursor:pointer">
+            </div>
+        </div>
 
     </div>
 </div>
 
-<body>
-    <!-- 상단 고정 fixed -->
-    <div class="fixed">
 
-        <!-- 상단 Header -->
-        <header class="header">
-            <p></p>
-        </header>
-
-        <!-- Header - nav -->
-        <nav class="nav">
-            <div class="nav_weather">
-                <p class="weather"></p>
-            </div>
-            <div class="nav_write">
-
-            </div>
-        </nav>
-
-    </div>
-
-    <!-- 본문 -->
-
-    <div class="myCard">
-        <div class="row row-cols-1 row-cols-md-3 g-4 list_add" id="post-box">
-            <div class="col">
-                <div class="card">
-                    <img src="https://png.pngtree.com/png-vector/20190214/ourlarge/pngtree-vector-plus-icon-png-image_515260.jpg" onclick=location.href="/post" class="card-img-top" alt="빈 이미지" width="500px" height="500px">
-                    게시글 작성
-                </div>
-            </div>
-
-        </div>
-    </div>
-
-
-    <!-- 하단 -->
-    <footer class="footer">
-        <p>Scratch Paper</p>
-    </footer>
+<!-- 하단 -->
+<footer class="footer">
+    <h3>Scratch Paper</h3>
+</footer>
 </body>
 
-</html>
-
+<script src="../static/js/draw.js"></script>
 </html>
