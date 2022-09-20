@@ -7,7 +7,7 @@ client = MongoClient('mongodb+srv://JEYUN:LAKE@cluster0.g4kgzxf.mongodb.net/Clus
 
 db = client.study
 
-
+# 완료!
 @app.route('/')
 def main_page():
     return render_template('/main.html')
