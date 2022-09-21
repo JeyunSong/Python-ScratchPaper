@@ -5,6 +5,7 @@
     <title>Scratch Paper</title>
 
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src=" https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
 
     <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -52,7 +53,7 @@
     }
 
     function logout() {
-        $.removeCookie('mytoken');
+        $.removeCookie('coin', {path: '/'});
         alert('로그아웃!')
         window.location.href = '/login'
     }

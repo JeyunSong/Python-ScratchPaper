@@ -16,7 +16,7 @@ SECRET_KEY = 'LAKE'
 # 완료!
 @app.route('/')
 def home():
-    token_receive = request.cookies.get('mytoken')
+    token_receive = request.cookies.get('coin')
     try:
         payload = jwt.decode(token_receive, SECRET_KEY, algorithms=['HS256'])
         user_info = db.user.find_one({"id": payload['id']})
@@ -93,7 +93,7 @@ def api_login():
 
 @app.route('/api/nick', methods=['GET'])
 def api_valid():
-    token_receive = request.cookies.get('mytoken')
+    token_receive = request.cookies.get('coin')
 
     # try / catch 문?
     # try 아래를 실행했다가, 에러가 있으면 except 구분으로 가란 얘기입니다.
