@@ -82,17 +82,28 @@ canvas {
     display: flex;
 }
 
-.text-control {
+.text_box {
     width: 200px;
     height: 300px;
     border-radius: 2rem;
     background-color: ghostwhite;
     border: 0;
     outline: 0;
-    text-align: center;
 
-    line-height: 100px;
+}
+.text-control {
+    margin-top: 23px;
+    margin-left: 23px;
+    width: 150px;
+    height: 250px;
+    text-align: center;
+    line-height: normal;
+    letter-spacing: normal;
     font-weight: bold;
+    background-color: ghostwhite;
+    border: 0;
+    outline: 0;
+    overflow: scroll;
 }
 
 .title-control {
@@ -104,9 +115,11 @@ canvas {
     outline: 0;
     text-align: center;
     font-weight: bold;
+    overflow: scroll;
 }
 
 .button {
+    margin-top: 30px;
     width: 200px;
     height: 100px;
     border-radius: 2rem;
@@ -183,13 +196,57 @@ canvas {
     display: flex;
     justify-content: center;
     align-items: center;
-    cursor: pointer;
+    cursor: default;
     margin-top: 5%;
+}
+.img_view {
+    cursor: pointer;
 }
 .card-body {
     margin-left: 30px;
 }
 .card-text {
+    width: 200px;
+    height: 60px;
+    border-radius: 2rem;
+    background-color: ghostwhite;
+    border: 0;
+    outline: 0;
+    text-align: center;
+    font-weight: bold;
+    margin-top: 20px;
+    line-height: 60px;
+    font-size: 16pt;
+
+}
+.content-text {
+    width: 200px;
+    height: 150px;
+    border-radius: 2rem;
+    background-color: ghostwhite;
+    border: 0;
+    outline: 0;
+    margin-top: 20px;
+
+}
+
+.content-area {
+    width: 170px;
+    height: 120px;
+    margin-left: 14px;
+    padding-bottom: 14px;
+    padding-top: 14px;
+    text-align: center;
+    line-height: normal;
+    font-size: 13pt;
+    letter-spacing: normal;
+    font-weight: bold;
+    background-color: ghostwhite;
+    border: 0;
+    outline: 0;
+    overflow: scroll;
+}
+.card-like {
     width: 200px;
     height: 100px;
     border-radius: 2rem;
@@ -201,7 +258,7 @@ canvas {
     margin-top: 20px;
     line-height: 100px;
     font-size: 16pt;
-
+    cursor: pointer;
 }
 .card-title {
     width: 200px;
@@ -215,5 +272,6 @@ canvas {
     margin-top: 20px;
     line-height: 50px;
     font-size: 16pt;
+    cursor: pointer;
 }
 

@@ -131,20 +131,18 @@ def save_post():
     id_receive = payload['id']
     title_receive = request.form['title']
     content_receive = request.form['text']
-    likecount_receive = request.form['like_count']
     picture_receive = request.form.get('picture')
-
 
     user_posting_list = list(db.pic.find({}, {'_id': False}))
     count = len(user_posting_list) + 1
-
+    likecount = 0
     # likeid = []
 
     doc = {
         'post_num': count,
         'title': title_receive,
         'content': content_receive,
-        'likecount': likecount_receive,
+        'likecount': likecount,
         'picture': picture_receive,
         'id': id_receive
         # 'likeid' : (title_receive,content_receive)
@@ -158,6 +156,21 @@ def save_post():
 def show_post():
     pic_list = list(db.pic.find({}, {'_id': False}))
     return jsonify({'pic': pic_list})
+
+
+@app.route("/like_post", methods=["POST"])
+def like_post():
+    postnums = request.form['postnum_give']
+    id = request.form['id_give']
+    postnum = int(postnums)
+
+    target_like = db.pic.find_one({'post_num': postnum})
+
+    current_like = target_like['likecount']
+    new_like = current_like + 1
+
+    db.pic.update_one({'post_num': postnum}, {'$set': {'likecount': new_like}})
+    return jsonify({'result': 'success', 'msg': '좋아요완료! ❤'})
 
 
 if __name__ == '__main__':

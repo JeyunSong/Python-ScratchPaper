@@ -36,14 +36,14 @@
                     let postnum = rows[i]['post_num']
                     let title = rows[i]['title']
                     let text = rows[i]['text']
-                    let like_count = rows[i]['like_count']
+                    let likecount = rows[i]['likecount']
                     let id = rows[i]['id']
 
                     let temp_html = `<div class="col">
                                               <div class="card">
                                                         <img src="${picture}" onclick=send_post(${postnum}) class="card-img-top" width="300px" height="300px">
                                                     </div>
-                                                    <div class="like_like">❤️${like_count}</div>
+                                                    <div class="like_like"></div>
                                             </div>`
 
                     $('#post-box').append(temp_html)
