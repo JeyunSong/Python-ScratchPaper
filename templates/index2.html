@@ -20,45 +20,20 @@
             crossorigin="anonymous"></script>
 
     <script>
-        //     $(document).ready(function () {
-        //         show_userposting();
-        //     });
-        //
-        //     function show_userposting() {
-        //         $.ajax({
-        //             type: "GET",
-        //             url: "/main/user",
-        //             data: {},
-        //             success: function (response) {
-        //                 let rows = response['user_posting']
-        //                 console.log(rows)
-        //                 for (let i = 0; i < rows.length; i++) {
-        //                     let picture = rows[i]['picture']
-        //                     let postnum = rows[i]['postnum']
-        //                     let title = rows[i]['title']
-        //                     let content = rows[i]['content']
-        //                     let likecount = rows[i]['likecount']
-        //
-        //                     let temp_html = `<h5 class="card-title">${title}</h5>
-        // <img src=${picture}
-        //      class="card-img-top" alt="...">
-        // <div class="card-body">
-        //     <p class="card-text">${content}</p>
-        //     <p class="card-text">좋아요❤ ${likecount}개</p>
-        // </div>`
-        //
-        //                     $('#card_list').append(temp_html)
-        //
-        //                 }
-        //             }
-        //         })
-        //     }
-
-        <script>
+        function like_post(postnum,id) {
+            $.ajax({
+                type: "POST",
+                url: "/like_post",
+                data: {postnum_give: postnum,id_give:id},
+                success: function (response) {
+                    alert(response["msg"]);
+                    window.location.reload();
+                },
+            });
+        }
 
     </script>
 
-    </script>
 
     <style>
 
@@ -73,19 +48,25 @@
     {% set title = row["title"] %}
     {% set picture = row["picture"] %}
     {% set content = row["content"] %}
+    {% set postnum = row["post_num"] %}
     {% set likecount = row["likecount"] %}
-    {% set postnum = row["postnum"] %}
+
 
     <div class="img_view">
-         <img class="picture_view" src={{picture}} class="card-img-top" width="600" height="600">
+        <img class="picture_view" src={{ picture }} class="card-img-top" width="600" height="600">
     </div>
 
     <div class="card-body">
-        <div onclick=location.href="/main" class="card-title">Scratch Paper</div>
-        <div class="card-text">{{id}}</div>
-        <div class="card-text">{{title}}</div>
-        <div class="card-text">{{content}}</div>
-        <div class="card-text">❤️ {{likecount}}</div>
+        <div onclick=location.href="/" class="card-title">Scratch Paper</div>
+        <div class="card-text">{{ id }}</div>
+        <div class="card-text">{{ title }}</div>
+        <div class="card-text">{{ content }}</div>
+
+        <div class="card-text">
+            <button onclick="like_post({{ postnum }},{{ id }})">
+                    ❤{{ likecount }}
+            </button>
+        </div>
     </div>
 </div>
 

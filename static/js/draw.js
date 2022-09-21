@@ -113,12 +113,11 @@ function posting() {
 
     let title = $('#title').val()
     let text = $('#text').val()
-    let like_count = 0
 
     $.ajax({
         type: 'post',
         url: '/save_post',
-        data: {picture: dataURL, title: title, text: text, like_count: like_count},
+        data: {picture: dataURL, title: title, text: text},
         success: function (response) {
             alert(response['msg'])
             window.location.replace('/')
