@@ -7,7 +7,6 @@ import hashlib
 app = Flask(__name__)
 
 client = MongoClient('mongodb+srv://JEYUN:LAKE@cluster0.g4kgzxf.mongodb.net/Cluster0?retryWrites=true&w=majority')
-
 db = client.study
 
 SECRET_KEY = 'LAKE'
@@ -122,6 +121,21 @@ def show_userpostings(keyword):
     user_postings_list = db.pic.find_one({'post_num': keywords})
     return render_template('/index2.html', row=user_postings_list)
 
+@app.route("/like_post", methods=["POST"])
+def like_post():
+    postnums = request.form['postnum_give']
+    id = request.form['id_give']
+    postnum = int(postnums)
+
+    target_like = db.pic.find_one({'post_num': postnum})
+    print(target_like)
+
+    current_like = target_like['likecount']
+    new_like = current_like + 1
+
+    db.pic.update_one({'post_num': postnum}, {'$set': {'likecount': new_like}})
+    return jsonify({'result': 'success', 'msg': '좋아요완료! ❤'})
+
 
 @app.route('/save_post', methods=["POST"])
 def save_post():
@@ -136,6 +150,10 @@ def save_post():
     user_posting_list = list(db.pic.find({}, {'_id': False}))
     count = len(user_posting_list) + 1
     likecount = 0
+<<<<<<< HEAD
+=======
+
+>>>>>>> 04cbe450668022c58247dac0a5cf3164ae792cfb
     # likeid = []
 
     doc = {
