@@ -11,7 +11,7 @@
         <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 
         <!-- Bulma CSS -->
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
+        <link rel="stylesheet" type="text/css" href="../static/css/login.css">
         <!-- JS -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
@@ -57,17 +57,17 @@
         </script>
     </head>
     <body>
-        <div class="section has-text-centered">
-            <h1 class="title">회원가입 페이지</h1>
+
+        <div class="wrap_sign">
             <div class="container" style="width:60%">
                 <div class="field is-horizontal">
                     <div class="field-label is-normal">
-                        <label class="label" for="userid">ID</label>
+                        <label class="label_2" for="userid" onclick=location.href="/login">Scratch Paper</label>
                     </div>
                     <div class="field-body">
                         <div class="field">
                             <div class="control">
-                                <input type="text" class="input" id="userid" aria-describedby="emailHelp"
+                                <input type="text" class="input_2" id="userid" aria-describedby="emailHelp"
                                        placeholder="My ID">
                             </div>
                         </div>
@@ -75,29 +75,29 @@
                 </div>
                 <div class="field is-horizontal">
                     <div class="field-label is-normal">
-                        <label class="label" for="userpw">PW</label>
+                        <label class="label_2" for="userpw"></label>
                     </div>
                     <div class="field-body">
                         <div class="field">
                             <div class="control">
-                                <input type="password" class="input" id="userpw" placeholder="My Password">
+                                <input type="password" class="input_2" id="userpw" placeholder="My Password">
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="field is-horizontal">
                     <div class="field-label is-normal">
-                        <label class="label" for="usernick">NICKNAME</label>
+                        <label class="label_2" for="usernick"></label>
                     </div>
                     <div class="field-body">
                         <div class="field">
                             <div class="control">
-                                <input type="text" class="input" id="usernick" placeholder="My Nickname">
+                                <input type="text" class="input_2" id="usernick" placeholder="My Nickname">
                             </div>
                         </div>
                     </div>
                 </div>
-                <button class="button is-primary" onclick="register()">회원가입</button>
+                <button class="sign_btn" onclick="register()">회원가입</button>
             </div>
         </div>
     </body>

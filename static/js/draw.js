@@ -120,7 +120,7 @@ function posting() {
         url: '/save_post',
         data: {picture: dataURL, title: title, text: text, like_count: like_count},
         success: function (response) {
-            alert(response)
+            alert(response['msg'])
             window.location.replace('/')
         }
     })

@@ -125,10 +125,15 @@ def show_userpostings(keyword):
 
 @app.route('/save_post', methods=["POST"])
 def save_post():
+    token_receive = request.cookies.get('coin')
+    payload = jwt.decode(token_receive, SECRET_KEY, algorithms=['HS256'])
+
+    id_receive = payload['id']
     title_receive = request.form['title']
     content_receive = request.form['text']
     likecount_receive = request.form['like_count']
     picture_receive = request.form.get('picture')
+
 
     user_posting_list = list(db.pic.find({}, {'_id': False}))
     count = len(user_posting_list) + 1
@@ -140,12 +145,13 @@ def save_post():
         'title': title_receive,
         'content': content_receive,
         'likecount': likecount_receive,
-        'picture': picture_receive
+        'picture': picture_receive,
+        'id': id_receive
         # 'likeid' : (title_receive,content_receive)
     }
 
     db.pic.insert_one(doc)
-    return jsonify({'result': 'success', 'msg': '저장 완료!'})
+    return jsonify({'result': 'success', 'msg': '일기장 저장 완료!'})
 
 
 @app.route("/show_post", methods=["GET"])

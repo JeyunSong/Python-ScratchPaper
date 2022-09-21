@@ -65,39 +65,45 @@
     </head>
     <body>
         <div class="wrap">
-            <div>
-                <img src="https://image.ajunews.com/content/image/2019/12/25/20191225170826943516.jpg"
-            width="450" height="450">
+            <div >
+                <img src="https://img1.daumcdn.net/thumb/R1280x0/?fname=http://t1.daumcdn.net/brunch/service/user/17c8/image/SeWwQZ6GH13YNjiGwxqFFRs82yM.jpg" class="main_image"
+            width="600" height="600">
             </div>
 
-            <div class="container" style="width:80%">
-                <div class="field is-horizontal">
-                    <div class="field-label is-normal">
-                        <label class="label" for="userid">ID</label>
+            <div class="container">
+
+                <div class="id_in">
+
+                    <div class="id_label">
+                        <h3 class="label" for="userid">Scratch Paper</h3>
                     </div>
+
                     <div class="field-body">
-                        <div class="field">
+                        <div class="pw_in">
                             <div class="control">
-                                <input type="text" class="input" id="userid" aria-describedby="emailHelp"
+                                <input type="text" class="input_id" id="userid" aria-describedby="emailHelp"
                                        placeholder="My ID">
                             </div>
                         </div>
                     </div>
+
                 </div>
+
+
                 <div class="field is-horizontal">
                     <div class="field-label is-normal">
-                        <label class="label" for="userpw">PW</label>
+                        <label class="label" for="userpw"> </label>
                     </div>
                     <div class="field-body">
                         <div class="field">
                             <div class="control">
-                                <input type="password" class="input" id="userpw" placeholder="My Password">
+                                <input type="password" class="input_pw" id="userpw" placeholder="My Password">
                             </div>
                         </div>
                     </div>
                 </div>
-                <button class="button is-primary" onclick="login()">로그인</button>
-                <button class="button is-primary" onclick="window.location.href='/register'">회원가입</button>
+                <button class="login_btn" onclick="login()">로그인</button>
+                <button class="login_btn" onclick="window.location.href='/register'">회원가입</button>
             </div>
         </div>
     </body>

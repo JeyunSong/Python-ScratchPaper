@@ -125,7 +125,15 @@ canvas {
     width: 70%;
     max-width: 1200px;
 }
-
+.card {
+    border: 0;
+    outline: 0;
+    cursor: pointer;
+}
+.like_like {
+    font-size: 15pt;
+    font-weight: bold;
+}
 .main-top {
     width: 100%;
     height: 400px;
@@ -145,6 +153,67 @@ canvas {
 .footer {
     text-align: center;
     margin-top: 50px;
+    margin-bottom: 20px;
+    font-weight: bold;
+    font-size: 30px;
 }
+.userinfo_art {
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    margin-bottom: 25px;
+}
+.logout_btn {
+    margin-left: 10px;
+    width: 80px;
+    height: 40px;
+    border-radius: 2rem;
+    background-color: coral;
+    border: 0;
+    outline: 0;
+    font-weight: bold;
+}
+.subtitle {
+    font-weight: bold;
+}
+.picture_view {
+    border-radius: 3rem;
+}
+.card_list {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    margin-top: 5%;
+}
+.card-body {
+    margin-left: 30px;
+}
+.card-text {
+    width: 200px;
+    height: 100px;
+    border-radius: 2rem;
+    background-color: ghostwhite;
+    border: 0;
+    outline: 0;
+    text-align: center;
+    font-weight: bold;
+    margin-top: 20px;
+    line-height: 100px;
+    font-size: 16pt;
 
+}
+.card-title {
+    width: 200px;
+    height: 50px;
+    border-radius: 2rem;
+    background-color: coral;
+    border: 0;
+    outline: 0;
+    text-align: center;
+    font-weight: bold;
+    margin-top: 20px;
+    line-height: 50px;
+    font-size: 16pt;
+}
 

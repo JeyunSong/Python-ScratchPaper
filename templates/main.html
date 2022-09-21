@@ -37,12 +37,13 @@
                     let title = rows[i]['title']
                     let text = rows[i]['text']
                     let like_count = rows[i]['like_count']
+                    let id = rows[i]['id']
 
                     let temp_html = `<div class="col">
                                               <div class="card">
                                                         <img src="${picture}" onclick=send_post(${postnum}) class="card-img-top" width="300px" height="300px">
                                                     </div>
-                                                    ❤ ${like_count}명이 좋아합니다
+                                                    <div class="like_like">❤️${like_count}</div>
                                             </div>`
 
                     $('#post-box').append(temp_html)
@@ -71,25 +72,32 @@
 </header>
 
 <!-- + 버튼 -->
-<div class="myCard">
-    <div class="row row-cols-1 row-cols-md-3 g-4 list_add" id="post-box">
-        <div class="col">
-            <div class="card">
-                <img src="https://ifh.cc/g/YAw2t3.jpg" onclick=location.href="/post" class="card-img-top"
-                     width="300px" height="300px" style="cursor:pointer">
-            </div>
-        </div>
+<div>
 
+
+    <div class="myCard">
+        <div class="userinfo_art">
+        <h5 class="subtitle">{{ nickname }}님 환영해요!</h5>
+        <button class="logout_btn" onclick="logout()">로그아웃</button>
     </div>
+
+        <div class="row row-cols-1 row-cols-md-3 g-4 list_add" id="post-box">
+            <div class="col">
+                <div class="card">
+                    <img src="https://ifh.cc/g/YAw2t3.jpg" onclick=location.href="/post" class="card-img-top"
+                         width="300px" height="300px" style="cursor:pointer">
+                </div>
+            </div>
+
+        </div>
+    </div>
+
 </div>
-
-
-<!-- 하단 -->
 <footer class="footer">
-    <h3>Scratch Paper</h3>
-    <h5 class="subtitle">나의 닉네임은: {{nickname}}</h5>
-    <button class="button is-danger" onclick="logout()">로그아웃</button>
+<div>Scratch Paper</div>
 </footer>
+<!-- 하단 -->
+
 </body>
 
 <script src="../static/js/draw.js"></script>

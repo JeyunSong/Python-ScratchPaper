@@ -5,8 +5,7 @@
     <title>Title</title>
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="../static/css/draw.css">
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -68,20 +67,25 @@
 </head>
 
 <body>
-<div id="card_list" class="card" style="width: 18rem;">
+<div id="card_list" class="card_list">
 
+    {% set id = row["id"] %}
     {% set title = row["title"] %}
     {% set picture = row["picture"] %}
     {% set content = row["content"] %}
     {% set likecount = row["likecount"] %}
     {% set postnum = row["postnum"] %}
 
-    <h5 class="card-title">{{title}}</h5>
-    <img src={{picture}} class="card-img-top" alt="...">
-    <div class="card-body">
-        <p class="card-text">{{content}}</p>
-        <p class="card-text">좋아요❤ {{likecount}}개</p>
+    <div class="img_view">
+         <img class="picture_view" src={{picture}} class="card-img-top" width="600" height="600">
+    </div>
 
+    <div class="card-body">
+        <div onclick=location.href="/main" class="card-title">Scratch Paper</div>
+        <div class="card-text">{{id}}</div>
+        <div class="card-text">{{title}}</div>
+        <div class="card-text">{{content}}</div>
+        <div class="card-text">❤️ {{likecount}}</div>
     </div>
 </div>
 
