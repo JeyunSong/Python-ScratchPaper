@@ -135,12 +135,3 @@ function send_post(num) {
 
     window.location.href='/user/'+postnum
 }
-
-
-
-
-
-
-
-
-

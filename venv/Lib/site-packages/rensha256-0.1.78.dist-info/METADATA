@@ -1,0 +1,43 @@
+Metadata-Version: 2.1
+Name: rensha256
+Version: 0.1.78
+Summary: Python command line application bare bones template.
+Home-page: UNKNOWN
+Author: Taylor Monacelli
+Author-email: taylormonacelli@gmail.com
+License: UNKNOWN
+Project-URL: Bug Tracker, https://github.com/taylormonacelli/rensha256/issues
+Project-URL: Documentation, https://github.com/taylormonacelli/rensha256
+Project-URL: Source Code, https://github.com/taylormonacelli/rensha256
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.7
+Requires-Dist: pathlib
+
+# rensha256
+
+Commandline to rename a file to it's sha256 digest while keeping the file's extension.
+
+## Example
+
+```
+find ~/Documents -maxdepth 1 -type f | rensha256
+```
+
+### Installing
+
+```
+python setup.py install
+```
+
+## Versioning
+
+We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags).
+
+## Authors
+
+* **Taylor Monacelli** - *Initial work* - [taylormonacelli](https://github.com/taylormonacelli)
+
+

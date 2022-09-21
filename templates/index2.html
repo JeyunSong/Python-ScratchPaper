@@ -20,13 +20,12 @@
             integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
             crossorigin="anonymous"></script>
 
-<<<<<<< HEAD
 <script>
-        function like_post(post_num) {
+        function like_post(postnum) {
             $.ajax({
               type: "POST",
               url: "/like_post",
-              data: {postnum_give: postnum,id_give: id},
+              data: {postnum_give: postnum},
               success: function (response) {
                 alert(response["msg"]);
                 window.location.reload();
@@ -34,28 +33,6 @@
             });
           }
     </script>
-=======
-    <script>
-        function like_post(postnum,id) {
-            $.ajax({
-                type: "POST",
-                url: "/like_post",
-                data: {postnum_give: postnum,id_give:id},
-                success: function (response) {
-                    alert(response["msg"]);
-                    window.location.reload();
-                },
-            });
-        }
-
-    </script>
-
-
-    <style>
-
-
-    </style>
->>>>>>> 04cbe450668022c58247dac0a5cf3164ae792cfb
 </head>
 
 <body>
@@ -67,7 +44,6 @@
     {% set content = row["content"] %}
     {% set postnum = row["post_num"] %}
     {% set likecount = row["likecount"] %}
-<<<<<<< HEAD
 
     <div class="img_view">
          <img class="picture_view" src={{picture}} class="card-img-top" alt="..." width="600" height="600">
@@ -83,26 +59,7 @@
             </div>
         </div>
 
-        <button class="card-like" onclick="like_post({{ postnum }},{{ id }})">❤️ {{likecount}}</button>
-=======
-
-
-    <div class="img_view">
-        <img class="picture_view" src={{ picture }} class="card-img-top" width="600" height="600">
-    </div>
-
-    <div class="card-body">
-        <div onclick=location.href="/" class="card-title">Scratch Paper</div>
-        <div class="card-text">{{ id }}</div>
-        <div class="card-text">{{ title }}</div>
-        <div class="card-text">{{ content }}</div>
-
-        <div class="card-text">
-            <button onclick="like_post({{ postnum }},{{ id }})">
-                    ❤{{ likecount }}
-            </button>
-        </div>
->>>>>>> 04cbe450668022c58247dac0a5cf3164ae792cfb
+        <button class="card-like" onclick="like_post({{ postnum }})">❤️ {{likecount}}</button>
     </div>
 </div>
 

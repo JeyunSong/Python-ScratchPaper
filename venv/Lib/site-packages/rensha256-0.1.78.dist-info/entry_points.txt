@@ -1,0 +1,3 @@
+[console_scripts]
+rensha256 = rensha256.rensha256:main
+

@@ -103,7 +103,10 @@ canvas {
     background-color: ghostwhite;
     border: 0;
     outline: 0;
-    overflow: scroll;
+    -ms-overflow-style: scrollbar;
+}
+.box::-webkit-scrollbar {
+    display: none;
 }
 
 .title-control {
@@ -115,7 +118,7 @@ canvas {
     outline: 0;
     text-align: center;
     font-weight: bold;
-    overflow: scroll;
+    -ms-overflow-style: scrollbar;
 }
 
 .button {
@@ -244,8 +247,9 @@ canvas {
     background-color: ghostwhite;
     border: 0;
     outline: 0;
-    overflow: scroll;
+    overflow: hidden;
 }
+
 .card-like {
     width: 200px;
     height: 100px;
@@ -274,4 +278,3 @@ canvas {
     font-size: 16pt;
     cursor: pointer;
 }
-

@@ -2,11 +2,18 @@ from pymongo import MongoClient
 from flask import Flask, request, jsonify, render_template, session, redirect, url_for
 import jwt
 import datetime
+from hashlib import sha256
 import hashlib
 
 app = Flask(__name__)
 
+m = sha256()
+m.update('Life is too short'.encode('utf-8'))
+
+m.update(', you need python'.encode('utf-8'))
+
 client = MongoClient('mongodb+srv://JEYUN:LAKE@cluster0.g4kgzxf.mongodb.net/Cluster0?retryWrites=true&w=majority')
+
 db = client.study
 
 SECRET_KEY = 'LAKE'
@@ -18,7 +25,7 @@ def home():
     token_receive = request.cookies.get('coin')
     try:
         payload = jwt.decode(token_receive, SECRET_KEY, algorithms=['HS256'])
-        user_info = db.user.find_one({"id": payload['id']})
+        user_info = db.pic.find_one({"id": payload['id']})
         return render_template('main.html', nickname=user_info["nick"])
     except jwt.ExpiredSignatureError:
         return redirect(url_for("login", msg="로그인 시간이 만료되었습니다."))
@@ -55,7 +62,7 @@ def api_register():
 
     pw_hash = hashlib.sha256(pw_receive.encode('utf-8')).hexdigest()
 
-    db.user.insert_one({'id': id_receive, 'pw': pw_hash, 'nick': nickname_receive})
+    db.pic.insert_one({'id': id_receive, 'pw': pw_hash, 'nick': nickname_receive})
 
     return jsonify({'result': 'success', 'msg': '회원가입 완료!'})
 
@@ -69,7 +76,7 @@ def api_login():
     pw_hash = hashlib.sha256(pw_receive.encode('utf-8')).hexdigest()
 
     # id, 암호화된pw을 가지고 해당 유저를 찾습니다.
-    result = db.user.find_one({'id': id_receive, 'pw': pw_hash})
+    result = db.pic.find_one({'id': id_receive, 'pw': pw_hash})
 
     # 찾으면 JWT 토큰을 만들어 발급합니다.
     if result is not None:
@@ -101,11 +108,10 @@ def api_valid():
         # token을 시크릿키로 디코딩합니다.
         # 보실 수 있도록 payload를 print 해두었습니다. 우리가 로그인 시 넣은 그 payload와 같은 것이 나옵니다.
         payload = jwt.decode(token_receive, SECRET_KEY, algorithms=['HS256'])
-        print(payload)
 
         # payload 안에 id가 들어있습니다. 이 id로 유저정보를 찾습니다.
         # 여기에선 그 예로 닉네임을 보내주겠습니다.
-        userinfo = db.user.find_one({'id': payload['id']}, {'_id': 0})
+        userinfo = db.pic.find_one({'id': payload['id']}, {'_id': 0})
         return jsonify({'result': 'success', 'nickname': userinfo['nick']})
     except jwt.ExpiredSignatureError:
         # 위를 실행했는데 만료시간이 지났으면 에러가 납니다.
@@ -121,21 +127,6 @@ def show_userpostings(keyword):
     user_postings_list = db.pic.find_one({'post_num': keywords})
     return render_template('/index2.html', row=user_postings_list)
 
-@app.route("/like_post", methods=["POST"])
-def like_post():
-    postnums = request.form['postnum_give']
-    id = request.form['id_give']
-    postnum = int(postnums)
-
-    target_like = db.pic.find_one({'post_num': postnum})
-    print(target_like)
-
-    current_like = target_like['likecount']
-    new_like = current_like + 1
-
-    db.pic.update_one({'post_num': postnum}, {'$set': {'likecount': new_like}})
-    return jsonify({'result': 'success', 'msg': '좋아요완료! ❤'})
-
 
 @app.route('/save_post', methods=["POST"])
 def save_post():
@@ -150,10 +141,6 @@ def save_post():
     user_posting_list = list(db.pic.find({}, {'_id': False}))
     count = len(user_posting_list) + 1
     likecount = 0
-<<<<<<< HEAD
-=======
-
->>>>>>> 04cbe450668022c58247dac0a5cf3164ae792cfb
     # likeid = []
 
     doc = {
@@ -179,7 +166,6 @@ def show_post():
 @app.route("/like_post", methods=["POST"])
 def like_post():
     postnums = request.form['postnum_give']
-    id = request.form['id_give']
     postnum = int(postnums)
 
     target_like = db.pic.find_one({'post_num': postnum})
