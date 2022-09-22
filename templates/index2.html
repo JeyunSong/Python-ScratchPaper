@@ -50,16 +50,19 @@
     </div>
 
     <div class="card-body">
-        <div onclick=location.href="/main" class="card-title">Scratch Paper</div>
+        <div class="card-text2">ID</div>
         <div class="card-text">{{id}}</div>
+        <div class="card-text2">TITLE</div>
         <div class="card-text">{{title}}</div>
+        <div class="card-text2">CONTENTS</div>
         <div class="content-text">
             <div class="content-area">
-                {{content}}
+                 {{content}}
             </div>
         </div>
 
         <button class="card-like" onclick="like_post({{ postnum }})">❤️ {{likecount}}</button>
+        <div onclick=location.href="/" class="card-title">Back</div>
     </div>
 </div>
 

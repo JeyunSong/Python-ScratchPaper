@@ -217,10 +217,18 @@ canvas {
     outline: 0;
     text-align: center;
     font-weight: bold;
-    margin-top: 20px;
     line-height: 60px;
-    font-size: 16pt;
+    font-size: 14pt;
 
+}
+.card-text2 {
+
+    text-align: center;
+    margin-top: 15px;
+    margin-bottom: 3px;
+    color: lightslategrey;
+
+    font-weight: lighter;
 }
 .content-text {
     width: 200px;
@@ -229,7 +237,6 @@ canvas {
     background-color: ghostwhite;
     border: 0;
     outline: 0;
-    margin-top: 20px;
 
 }
 
